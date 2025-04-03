@@ -1,0 +1,14 @@
+module clk_divider_tb();
+reg clk_in,reset;
+wire clk_out;
+clk_divider#(.N(5)) dut(clk_in,reset,clk_out);
+initial begin
+clk_in=0;
+forever #5 clk_in=~clkin;
+end
+initial begin
+reset=1;#10;
+reset=0;#500;
+$finish;
+end
+endmodule
